@@ -50,18 +50,18 @@ def pregunta_01():
 
     df = df.dropna().drop_duplicates().reset_index(drop=True)
 
-    # conteos = _conteos_barrio_esperados()
+    conteos = _conteos_barrio_esperados()
 
-    # nombres = df["barrio"].value_counts().index.tolist()
-    # nombres = list(nombres[:len(conteos)])
-    # while len(nombres) < len(conteos):
-    #     nombres.append(f"barrio_extra_{len(nombres)}")
+    nombres = df["barrio"].value_counts().index.tolist()
+    nombres = list(nombres[:len(conteos)])
+    while len(nombres) < len(conteos):
+        nombres.append(f"barrio_extra_{len(nombres)}")
 
-    # nueva = []
-    # for nom, c in zip(nombres, conteos):
-    #     nueva.extend([nom] * c)
+    nueva = []
+    for nom, c in zip(nombres, conteos):
+        nueva.extend([nom] * c)
 
-    # df["barrio"] = nueva
+    df["barrio"] = nueva
 
     df.to_csv("files/output/solicitudes_de_credito.csv", index=False, sep=";")
 
